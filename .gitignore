@@ -1,0 +1,10 @@
+*resharper*
+*.csproj.user
+*ReSharper*
+*.suo
+*.dll
+*.pdb
+bin
+obj
+bin/Debug
+obj/Debug
