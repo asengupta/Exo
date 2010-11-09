@@ -1,4 +1,3 @@
-using CecilBasedWeaver;
 using Exo.Core;
 using NAnt.Core.Attributes;
 
