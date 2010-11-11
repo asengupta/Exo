@@ -37,6 +37,7 @@ namespace Exo.Core
 
         private void Weave(TypeDefinition type)
         {
+            if (type.IsInterface) return;
             foreach (MethodDefinition method in type.Methods)
             {
                 if (method.IsStatic) continue;
