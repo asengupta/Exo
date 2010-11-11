@@ -34,11 +34,7 @@ namespace OutlookHooks.Task
         {
             var exclusions = new List<string>
                                  {
-                                     "ClientWeaverAttributes",
-                                     "BroadcastAspect",
-                                     "IMD.EventBus",
-                                     "MsmqEndpoint",
-                                     "SampleAspect",
+                                     "Exo",
                                      "ObjectNinja"
                                  };
             foreach (string exclusion in exclusions)
