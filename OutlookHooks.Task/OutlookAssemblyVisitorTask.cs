@@ -5,7 +5,7 @@ namespace OutlookHooks.Task
 {
     public abstract class OutlookAssemblyVisitorTask : AssemblyVisitorTask
     {
-        protected OutlookAssemblyVisitorTask(BroadcastAspectWeaver weaver) : base(weaver)
+        protected OutlookAssemblyVisitorTask(AspectWeaver weaver) : base(weaver)
         {
         }
 

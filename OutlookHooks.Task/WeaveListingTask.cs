@@ -6,10 +6,10 @@ namespace OutlookHooks.Task
     [TaskName("list.weave.outlook.addin")]
     public class WeaveListingTask : OutlookAssemblyVisitorTask
     {
-        private readonly BroadcastAspectWeaver weaver;
+        private readonly AspectWeaver weaver;
 
         public WeaveListingTask()
-            : base(new BroadcastAspectWeaver(new OutlookAttributeDescriptorFactory()))
+            : base(new AspectWeaver(new OutlookAttributeDescriptorFactory()))
         {
         }
     }

@@ -64,7 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AttributeDescriptor.cs" />
-    <Compile Include="BroadcastAspectWeaver.cs" />
+    <Compile Include="AspectWeaver.cs" />
     <Compile Include="IAttributeVisitorFactory.cs" />
     <Compile Include="IBehaviorDefinition.cs" />
     <Compile Include="InsertionAtEnd.cs" />

@@ -10,9 +10,9 @@ namespace OutlookHooks.Task
 {
     public abstract class AssemblyVisitorTask : NAnt.Core.Task
     {
-        private readonly BroadcastAspectWeaver weaver;
+        private readonly AspectWeaver weaver;
 
-        protected AssemblyVisitorTask(BroadcastAspectWeaver weaver)
+        protected AssemblyVisitorTask(AspectWeaver weaver)
         {
             this.weaver = weaver;
         }

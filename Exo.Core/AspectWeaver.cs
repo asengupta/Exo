@@ -5,11 +5,11 @@ using Mono.Cecil.Rocks;
 
 namespace Exo.Core
 {
-    public class BroadcastAspectWeaver
+    public class AspectWeaver
     {
         private readonly IAttributeVisitorFactory factory;
 
-        public BroadcastAspectWeaver(IAttributeVisitorFactory factory)
+        public AspectWeaver(IAttributeVisitorFactory factory)
         {
             this.factory = factory;
         }

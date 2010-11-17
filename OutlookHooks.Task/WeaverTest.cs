@@ -56,7 +56,7 @@ namespace OutlookHooks.Task
                          new StackTraceBroadcastWeave(typeof (TextStackTracePublication)));
             mappings.Add(typeof (Performance).FullName, new ExecutionTimeMonitorWeave(typeof (ExecutionTimeMonitor)));
             mappings.Add(typeof (Ping).FullName, new PingWeave(typeof (MsmqPinger)));
-            var weaver = new BroadcastAspectWeaver(new OutlookAttributeVisitorFactory(mappings));
+            var weaver = new AspectWeaver(new OutlookAttributeVisitorFactory(mappings));
             weaver.Weave(
                 new ModuleIO(
                     @"F:\Projects\IMD\src\Outlook\IMD - Outlook 2003 AddIn\bin\Debug\IMD.AddinProjectDependency.dll"),
@@ -93,7 +93,7 @@ namespace OutlookHooks.Task
             mappings.Add(typeof (Performance).FullName, new ExecutionTimeMonitorWeave(typeof (TextExecutionTimeMonitor)));
             mappings.Add(typeof (Ping).FullName, new PingWeave(typeof (TextPinger)));
             mappings.Add(typeof (RemoteDebug).FullName, new DebugWeave(typeof (MsmqBreakpoint)));
-            var weaver = new BroadcastAspectWeaver(new OutlookAttributeVisitorFactory(mappings));
+            var weaver = new AspectWeaver(new OutlookAttributeVisitorFactory(mappings));
             weaver.Weave(
                 new ModuleIO(@"F:\spikes\SampleCecilTestbed\SampleCecilTestbed\bin\Debug\SampleCecilTestbed.exe"), true);
         }

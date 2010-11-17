@@ -7,7 +7,7 @@ namespace OutlookHooks.Task
     public class WeaverTask : OutlookAssemblyVisitorTask
     {
         public WeaverTask()
-            : base(new BroadcastAspectWeaver(new OutlookAttributeVisitorFactory()))
+            : base(new AspectWeaver(new OutlookAttributeVisitorFactory()))
         {
         }
     }
