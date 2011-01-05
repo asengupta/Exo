@@ -18,10 +18,10 @@ namespace Exo.EventBus
             this.listeners.Add(listener);
         }
 
-        public void Publish(object component)
+        public void Publish(object component, string description)
         {
             this.listeners.ForEach(delegate (IEventBusListener listener) {
-                                                                             listener.IsAvailable(component);
+                                                                             listener.RegisterComponent(component, description);
             });
         }
 

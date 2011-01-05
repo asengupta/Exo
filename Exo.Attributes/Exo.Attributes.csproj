@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Broadcast.cs" />
+    <Compile Include="IsWeaved.cs" />
     <Compile Include="RemoteDebug.cs" />
     <Compile Include="Performance.cs" />
     <Compile Include="Ping.cs" />

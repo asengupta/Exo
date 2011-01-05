@@ -37,11 +37,11 @@
     </Reference>
     <Reference Include="NAnt.Core, Version=0.86.2898.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Exo.Libs\NAnt.Core.dll</HintPath>
+      <HintPath>..\..\tools\Nant\bin\NAnt.Core.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework, Version=2.4.8.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Exo.Libs\nunit.framework.dll</HintPath>
+      <HintPath>..\exo.output\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
@@ -87,12 +87,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddInDirectorySearch.cs" />
     <Compile Include="AssemblyVisitorTask.cs" />
     <Compile Include="OutlookAssemblyVisitorTask.cs" />
     <Compile Include="OutlookAttributeDescriptorFactory.cs" />
     <Compile Include="OutlookAttributeVisitorFactory.cs" />
-    <Compile Include="RegistryKeySearch.cs" />
     <Compile Include="WeaveListingTask.cs" />
     <Compile Include="WeaverTask.cs" />
     <Compile Include="WeaverTest.cs" />
@@ -110,6 +108,7 @@
   -->
   <PropertyGroup>
     <PostBuildEvent>copy /Y "$(TargetDir)\*.dll" $(SolutionDir)\exo.output
+
 copy /Y "$(TargetDir)\*.pdb" $(SolutionDir)\exo.output
 </PostBuildEvent>
   </PropertyGroup>

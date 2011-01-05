@@ -20,9 +20,9 @@ namespace OutlookHooks.Task
         public OutlookAttributeVisitorFactory() : this(new Dictionary<string, IWeave>
                                                     {
                                                         {typeof (Broadcast).FullName, new BroadcastWeave(typeof(MsmqExitBroadcast))},
-                                                        {typeof (Publish).FullName, new PublishWeave(typeof(ReturnValueInMemoryPublication), typeof(SelfInMemoryPublication), typeof(ArgumentInMemoryPublication))},
+                                                        {typeof (Publish).FullName, new PublishWeave(typeof(ReturnValueInMemoryPublication), typeof(SelfInMemoryPublication), typeof(ArgumentInMemoryPublication))}/*,
                                                         {typeof (StackTraceBroadcast).FullName, new StackTraceBroadcastWeave(typeof(TextStackTracePublication))},
-                                                        {typeof (Performance).FullName, new ExecutionTimeMonitorWeave(typeof(ExecutionTimeMonitor))}
+                                                        {typeof (Performance).FullName, new ExecutionTimeMonitorWeave(typeof(ExecutionTimeMonitor))}*/
                                                     })
         {
         }

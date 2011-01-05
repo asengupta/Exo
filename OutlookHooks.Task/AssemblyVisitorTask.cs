@@ -39,7 +39,7 @@ namespace OutlookHooks.Task
                                  };
             foreach (string exclusion in exclusions)
             {
-                if (info.FullName.Contains(exclusion))
+                if (info.Name.Contains(exclusion))
                 {
                     if (Verbose)
                         Console.Out.WriteLine("File {0} is excluded, skipping...", exclusion);

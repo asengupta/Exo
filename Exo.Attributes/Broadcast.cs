@@ -2,7 +2,7 @@ using System;
 
 namespace Exo.Attributes
 {
-    [AttributeUsage(AttributeTargets.Method)]
+    [AttributeUsage(AttributeTargets.Method | AttributeTargets.Property)]
     public class Broadcast : Attribute
     {
         public string Description

@@ -1,3 +1,4 @@
+using System.IO;
 using Exo.Core;
 using NAnt.Core.Attributes;
 
@@ -9,13 +10,12 @@ namespace OutlookHooks.Task
         {
         }
 
-        [TaskAttribute("addin.name", Required = false)]
-        public string AddInName { get; set; }
+        [TaskAttribute("dir.to.weave", Required = true)]
+        public string DirectoryToWeave { get; set; }
         
         protected override void ExecuteTask()
         {
-            if (string.IsNullOrEmpty(AddInName)) new AddInDeploymentDirectorySearch().Run(Weave);
-            else new AddInDeploymentDirectorySearch(AddInName).Run(Weave);
+            Weave(new DirectoryInfo(DirectoryToWeave));
         }
     }
 }

@@ -31,6 +31,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Exo.Aspects.Core, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\exo.output\Exo.Aspects.Core.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -45,10 +49,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Exo.Aspects.Core\Exo.Aspects.Core.csproj">
-      <Project>{CC75C9E9-F6F0-4F64-A81E-021790F61732}</Project>
-      <Name>Exo.Aspects.Core</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Exo.MsmqWrappers\Exo.MsmqEndpoint.csproj">
       <Project>{136962E2-7331-4248-AD13-09D141661A9D}</Project>
       <Name>Exo.MsmqEndpoint</Name>

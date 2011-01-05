@@ -20,7 +20,6 @@ namespace Exo.Weaves
         {
             string description = attribute.Properties.Where(argument => (argument.Name == "Description")).First().Argument.Value as string;
             ILProcessor processor = method.Body.GetILProcessor();
-            Instruction ldStr = processor.Create(OpCodes.Ldstr, description);
             Instruction broadcastObjectCreation = processor.Create(OpCodes.Newobj, method.Module.Import(broadcastType.GetConstructor(new Type[] {})));
             Instruction exitInstruction = processor.Create(OpCodes.Callvirt, method.Module.Import(broadcastType.GetMethod("Run", new[] { typeof(string), typeof(object) })));
             var returnValue = new VariableDefinition("retVal", method.Module.Import(typeof(object)));
@@ -29,14 +28,14 @@ namespace Exo.Weaves
             method.Body.Variables.Add(returnValue);
             Instruction store = processor.Create(OpCodes.Stloc, returnValue);
             Instruction reload = processor.Create(OpCodes.Ldloc, returnValue);
-
             var instructions = new List<Instruction>();
-            if (!this.ReturnsVoid(method))
+            if (!ReturnsVoid(method))
             {
                 instructions.Add(store);
             }
-            instructions.Add(ldStr);
+
             instructions.Add(broadcastObjectCreation);
+            instructions.Add(processor.Create(OpCodes.Ldstr, description));
             instructions.Add(processor.Create(OpCodes.Ldarg_0));
             instructions.Add(exitInstruction);
             instructions.Add(processor.Create(OpCodes.Nop));

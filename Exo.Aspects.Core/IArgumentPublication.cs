@@ -4,6 +4,6 @@ namespace Exo.Aspects.Core
 {
     public interface IArgumentPublication
     {
-        void Run(List<object> arguments);
+        void Run(List<object> arguments, string description);
     }
 }

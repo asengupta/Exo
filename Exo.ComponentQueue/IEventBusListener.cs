@@ -3,7 +3,7 @@ namespace Exo.EventBus
     public interface IEventBusListener
     {
         // Methods
-        void IsAvailable(object component);
+        void RegisterComponent(object component, string description);
         void IsMessaged(QueueResponse queueResponse);
     }
 }

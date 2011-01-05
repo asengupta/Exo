@@ -20,16 +20,17 @@ namespace Exo.MsmqEndpoint
 
         public event Received MessageReceived;
 
-        public void BlockingListen()
+        public object BlockingListen()
         {
-            BlockingListen(MessageQueue.InfiniteTimeout);
-        }
+            return BlockingListen(MessageQueue.InfiniteTimeout);
+         }
 
-        public void BlockingListen(TimeSpan timeout)
+        public object BlockingListen(TimeSpan timeout)
         {
             Message message = queue.Receive(timeout);
-            MessageReceived(message.Body);
-        }
+            if (message == null) return null;
+            return message.Body;
+         }
 
         public void ClearListeners()
         {

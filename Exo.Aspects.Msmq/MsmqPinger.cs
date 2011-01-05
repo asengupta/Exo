@@ -24,7 +24,8 @@ namespace Exo.Aspects.Msmq
         {
             new SafeAspectExecution().Run(
                 () =>
-                new DefaultMsmqEndpoint("OutlookFT.Response").Send(string.Format("{0}/{1}/{2}/{3}", methodDescription,
+                new DefaultMsmqEndpoint("OutlookFT.Response").Send(string.Format("{0}/{1}/{2}/{3}",
+                                                                                 methodDescription,
                                                                                  guid, status, DateTime.Now)));
         }
     }

@@ -6,6 +6,7 @@ namespace Exo.MsmqEndpoint
     {
         private readonly DefaultMsmqEndpoint endpoint;
         private readonly TimeSpan timeout;
+        public string LastMessage;
 
         public QueueListener(DefaultMsmqEndpoint endpoint, int timeoutInSeconds)
         {
@@ -13,27 +14,22 @@ namespace Exo.MsmqEndpoint
             timeout = new TimeSpan(0, 0, timeoutInSeconds);
         }
 
-        public QueueListener(DefaultMsmqEndpoint endpoint) : this(endpoint, 20)
+        public QueueListener(DefaultMsmqEndpoint endpoint) : this(endpoint, 60)
         {
             this.endpoint = endpoint;
         }
 
-        public void Listen()
+        public string Listen()
         {
-            endpoint.MessageReceived += delegate(object o)
-                                            {
-                                                Console.Out.WriteLine("Received {0}", o);
-                                                endpoint.BlockingListen(timeout);
-                                            };
-            endpoint.BlockingListen(timeout);
+            return endpoint.BlockingListen(timeout).ToString();
         }
 
-        public void ListenFor(string message)
+        public void ListenFor(string expected)
         {
-            endpoint.ClearListeners();
-            endpoint.MessageReceived += (o => Received(o.ToString(), message));
-            endpoint.BlockingListen(timeout);
-        }
+            var message = endpoint.BlockingListen(timeout).ToString();
+            while( message != expected)
+                message = endpoint.BlockingListen(timeout).ToString();
+         }
 
         private void Received(string actual, string expected)
         {

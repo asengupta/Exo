@@ -4,9 +4,9 @@ namespace Exo.Aspects.ComponentQueue
 {
     public class ReturnValueInMemoryPublication : IReturnValuePublication
     {
-        public void Run(object enclosingObject, object returnValue)
+        public void Run(object returnValue, string description)
         {
-            new SafeAspectExecution().Run(() => EventBus.ComponentEventBus.Instance.Publish(returnValue));
+            new SafeAspectExecution().Run(() => EventBus.ComponentEventBus.Instance.Publish(returnValue, description));
         }
     }
 }

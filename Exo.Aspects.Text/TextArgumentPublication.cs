@@ -6,7 +6,7 @@ namespace Exo.Aspects.Text
 {
     public class TextArgumentPublication : IArgumentPublication
     {
-        public void Run(List<object> arguments)
+        public void Run(List<object> arguments, string description)
         {
             Console.Out.WriteLine("Argument Publish Hook " + arguments.Count);
             foreach (var o in arguments)

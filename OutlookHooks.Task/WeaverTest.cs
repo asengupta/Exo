@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using CecilBasedWeaver;
@@ -8,7 +9,9 @@ using Exo.Aspects.Text;
 using Exo.Attributes;
 using Exo.Core;
 using Exo.Weaves;
+using Mono.Cecil;
 using NUnit.Framework;
+using System.Linq;
 
 namespace OutlookHooks.Task
 {
@@ -97,5 +100,50 @@ namespace OutlookHooks.Task
             weaver.Weave(
                 new ModuleIO(@"F:\spikes\SampleCecilTestbed\SampleCecilTestbed\bin\Debug\SampleCecilTestbed.exe"), true);
         }
+
+        [Test]
+        public void CanWeaveOutlookAddinEntirely()
+        {
+            var wt = new WeaverTask();
+            wt.Verbose = true;
+            wt.ExecuteFromUnitTest();
+        }
+
+        [Test]
+        public void CanWeaveIMDServiceContractDLL()
+        {
+            var weaver = new AspectWeaver(new OutlookAttributeVisitorFactory());
+            weaver.Weave(
+                new ModuleIO(
+                    @"F:\Projects\IMD\src\Outlook\IMD - Outlook 2003 AddIn\bin\Debug\IMD.Service.Contract.dll"),
+                false);
+        }
+
+        [Test, Ignore]
+        public void DebugWeave()
+        {
+            var weaver = new AspectWeaver(new OutlookAttributeVisitorFactory());
+            weaver.Weave(
+                new ModuleIO(
+                    @"C:\Users\prateekk\Documents\Visual Studio 2008\Projects\TrialProject\TrialProject\bin\Debug\TrialProject.exe"),
+                false);
+        }
+
+
+        [Test, Ignore]
+        public void CanAddIdentifyAttributesBeforeWeaving()
+        {
+            var module = new ModuleIO(@"D:\Projects\BCG_Mailing\IMD\weaver\TestExoProject\bin\debug\TestExoProject.dll");
+            var definition = module.Read();
+            CustomAttribute ca = new CustomAttribute (definition.Import (typeof (Publish).GetConstructor (Type.EmptyTypes)));
+            definition.CustomAttributes.Add(ca);
+            definition.Write(@"D:\Projects\BCG_Mailing\IMD\weaver\TestExoProject\bin\debug\NewTestExoProject.dll");
+
+            var newModule = new ModuleIO(@"D:\Projects\BCG_Mailing\IMD\weaver\TestExoProject\bin\debug\NewTestExoProject.dll");
+            var newDef = newModule.Read();
+            Assert.That(newDef.HasCustomAttributes);
+            Assert.That(newDef.CustomAttributes.Any(attribute => attribute.Constructor.DeclaringType.FullName == typeof(Publish).FullName));
+        }
     }
+
 }
